@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact &amp; Book | Therapy by Niha</title>
+<meta name="description" content="Book a free 15-minute consultation with Niha Idrees, Registered Psychotherapist. Call (365) 305-1702 or send a message online. Ontario-wide online sessions.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .contact-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 70px);
+  }
+
+  .contact-left {
+    background: var(--sage-deep); padding: 72px 7%;
+    display: flex; flex-direction: column; justify-content: center; color: white;
+  }
+
+  .contact-left .section-eyebrow { color: var(--sage-light); }
+  .contact-left .section-title { color: white; margin-bottom: 16px; }
+  .contact-left .section-body { color: rgba(255,255,255,0.78); max-width: 100%; }
+
+  .contact-detail { display: flex; align-items: flex-start; gap: 14px; margin-top: 36px; }
+  .contact-detail + .contact-detail { margin-top: 20px; }
+
+  .contact-detail-icon {
+    width: 44px; height: 44px; min-width: 44px;
+    background: rgba(255,255,255,0.12); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  .contact-detail-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-light); margin-bottom: 3px; font-weight: 600; }
+  .contact-detail-value { font-size: 15px; color: white; font-weight: 300; }
+  .contact-detail-value a { color: white; text-decoration: underline; }
+  .contact-detail-value a:hover { color: var(--gold-light); }
+
+  .free-consult-banner {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 14px; padding: 22px; margin-top: 44px;
+  }
+
+  .banner-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; margin-bottom: 8px; color: white; }
+  .banner-body { font-size: 13px; color: rgba(255,255,255,0.68); font-weight: 300; line-height: 1.7; }
+
+  .contact-right {
+    padding: 72px 7%; display: flex; flex-direction: column;
+    justify-content: center; background: var(--warm-white);
+  }
+
+  .form-eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage); margin-bottom: 14px; font-weight: 600; }
+  .form-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 3vw, 32px); font-weight: 300; margin-bottom: 32px; line-height: 1.2; color: var(--text-dark); }
+  .form-title em { font-style: italic; color: var(--sage-deep); }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-label { display: block; font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 7px; font-weight: 600; }
+
+  /* Error state */
+  .form-input.error, .form-select.error, .form-textarea.error { border-color: #C0392B; }
+  .field-error { font-size: 12px; color: #C0392B; margin-top: 5px; display: none; }
+  .field-error.show { display: block; }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%; padding: 13px 16px;
+    border: 2px solid rgba(45,82,65,0.2);
+    border-radius: 10px; font-family: 'DM Sans', sans-serif;
+    font-size: 16px; /* 16px prevents iOS auto-zoom */
+    font-weight: 300; color: var(--text-dark);
+    background: white; transition: border-color 0.2s; outline: none;
+    appearance: none; -webkit-appearance: none;
+    min-height: 48px;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--sage-deep); }
+  .form-textarea { resize: vertical; min-height: 120px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-note { font-size: 12px; color: var(--text-light); margin-top: 14px; font-weight: 300; line-height: 1.7; }
+
+  .form-submit { width: 100%; font-size: 15px; padding: 16px; min-height: 52px; border: none; cursor: pointer; }
+
+  .form-success { display: none; background: var(--sage-pale); border: 1px solid var(--sage-light); border-radius: 16px; padding: 40px 28px; text-align: center; }
+  .form-success.show { display: block; }
+  .form-success-icon { font-size: 44px; margin-bottom: 16px; }
+  .form-success-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--sage-deep); margin-bottom: 10px; }
+  .form-success-body { font-size: 15px; color: var(--text-mid); font-weight: 300; line-height: 1.7; margin-bottom: 28px; }
+
+  /* Live error announcement */
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+  @media (max-width: 900px) {
+    .contact-layout { grid-template-columns: 1fr; }
+    .contact-left { padding: 56px 6%; }
+    .contact-right { padding: 56px 6%; }
+    .form-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .contact-left { padding: 48px 5%; }
+    .contact-right { padding: 48px 5%; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav aria-label="Main navigation">
+  <a href="index.html" class="nav-brand" aria-label="Therapy by Niha – home">Therapy by Niha</a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu" onclick="toggleNav(this)">☰</button>
+  <ul class="nav-links" id="nav-menu" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="nav-cta active" aria-current="page">Book Consultation</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <main id="main-content">
+    <div class="contact-layout">
+
+      <section class="contact-left animate-1" aria-labelledby="contact-info-heading">
+        <p class="section-eyebrow">Get In Touch</p>
+        <h1 class="section-title" id="contact-info-heading">Let's start a <em style="color:var(--sage-light);">conversation</em></h1>
+        <p class="section-body">Reaching out is the first — and often hardest — step. I'm here to make it as easy as possible.</p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon" aria-hidden="true">📞</div>
+          <div>
+            <div class="contact-detail-label">Phone</div>
+            <div class="contact-detail-value"><a href="tel:+13653051702">(365) 305-1702</a></div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon" aria-hidden="true">📍</div>
+          <div>
+            <div class="contact-detail-label">Location</div>
+            <div class="contact-detail-value">Mississauga, ON L5M</div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon" aria-hidden="true">💻</div>
+          <div>
+            <div class="contact-detail-label">Session Format</div>
+            <div class="contact-detail-value">Online (Video/Phone) · Ontario-wide</div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon" aria-hidden="true">🌐</div>
+          <div>
+            <div class="contact-detail-label">Languages</div>
+            <div class="contact-detail-value">English · Hindi · Urdu</div>
+          </div>
+        </div>
+
+        <div class="free-consult-banner" role="note">
+          <div class="banner-title">Free 15-Minute Consultation</div>
+          <p class="banner-body">No commitment, no pressure. Just a chance to connect and see if we're the right fit for each other. Call or send a message below.</p>
+        </div>
+      </section>
+
+      <section class="contact-right animate-2" aria-labelledby="form-heading">
+        <div id="contact-form-wrap">
+          <p class="form-eyebrow">Send a Message</p>
+          <h2 class="form-title" id="form-heading">I'd love to <em>hear from you</em></h2>
+
+          <!-- Live region for screen reader announcements -->
+          <div aria-live="polite" aria-atomic="true" class="sr-only" id="form-announcer"></div>
+
+          <!-- ✏️ REPLACE the action URL below with your Formspree URL, e.g. https://formspree.io/f/xyzabc12 -->
+          <form id="contact-form" action="https://formspree.io/f/mdaqwkke" method="POST" novalidate>
+            <!-- Honeypot field: hidden from users, catches bots (Formspree reads this automatically) -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="f-fname">First Name <span aria-hidden="true">*</span></label>
+                <input type="text" class="form-input" id="f-fname" name="firstName" placeholder="Your first name" autocomplete="given-name" required aria-required="true" aria-describedby="fname-error">
+                <div class="field-error" id="fname-error" role="alert">Please enter your first name.</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-lname">Last Name <span aria-hidden="true">*</span></label>
+                <input type="text" class="form-input" id="f-lname" name="lastName" placeholder="Your last name" autocomplete="family-name" required aria-required="true" aria-describedby="lname-error">
+                <div class="field-error" id="lname-error" role="alert">Please enter your last name.</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-email">Email Address <span aria-hidden="true">*</span></label>
+              <input type="email" class="form-input" id="f-email" name="email" placeholder="your@email.com" autocomplete="email" required aria-required="true" aria-describedby="email-error">
+              <div class="field-error" id="email-error" role="alert">Please enter a valid email address.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-phone">Phone Number <span style="font-weight:300; text-transform:none; letter-spacing:0;">(optional)</span></label>
+              <input type="tel" class="form-input" id="f-phone" name="phone" placeholder="(xxx) xxx-xxxx" autocomplete="tel">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-topic">What brings you here?</label>
+              <select class="form-select" id="f-topic" name="topic" autocomplete="off">
+                <option value="">Select a topic...</option>
+                <option value="anxiety">Anxiety or Stress</option>
+                <option value="identity">Cultural Identity</option>
+                <option value="selfesteem">Self-Esteem</option>
+                <option value="relationships">Family or Relationships</option>
+                <option value="transitions">Life Transitions</option>
+                <option value="depression">Depression or Grief</option>
+                <option value="addiction">Addiction or Substance Use</option>
+                <option value="trauma">Trauma</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-message">Your Message</label>
+              <textarea class="form-textarea" id="f-message" name="message" placeholder="Tell me a little about what you're looking for, or simply say hello — no pressure to share more than you're comfortable with." aria-describedby="message-hint"></textarea>
+              <p id="message-hint" class="form-note" style="margin-top:6px;">Optional. Share only what feels comfortable.</p>
+            </div>
+
+            <button type="submit" class="btn-primary form-submit">Send Message →</button>
+            <p class="form-note">
+              Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.
+              Your message is completely confidential. This form is not monitored for emergencies —
+              if you are in crisis, please call <a href="tel:911" style="color:var(--sage-deep); font-weight:600;">911</a> or go to your nearest emergency room.
+            </p>
+          </form>
+        </div>
+
+        <div class="form-success" id="form-success" role="alert" aria-live="assertive">
+          <div class="form-success-icon" aria-hidden="true">🌿</div>
+          <h2 class="form-success-title">Thank you for reaching out</h2>
+          <p class="form-success-body">Your message has been received. Niha will be in touch within 1–2 business days. In the meantime, remember: reaching out was an act of courage.</p>
+          <a href="index.html" class="btn-primary">Return Home</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  function toggleNav(btn) {
+    const menu = document.getElementById('nav-menu');
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+    btn.textContent = isOpen ? '✕' : '☰';
+  }
+  document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('nav-menu').classList.remove('open');
+      const btn = document.querySelector('.nav-toggle');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = '☰';
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!document.querySelector('nav').contains(e.target)) {
+      document.getElementById('nav-menu').classList.remove('open');
+      const btn = document.querySelector('.nav-toggle');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = '☰';
+    }
+  });
+
+  // ── FORM VALIDATION + FORMSPREE SUBMISSION ──
+  const form = document.getElementById('contact-form');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  const validationRules = [
+    { id: 'f-fname', errorId: 'fname-error', validate: v => v.trim().length > 0 },
+    { id: 'f-lname', errorId: 'lname-error', validate: v => v.trim().length > 0 },
+    { id: 'f-email', errorId: 'email-error', validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+  ];
+
+  // Clear errors as user types
+  validationRules.forEach(f => {
+    document.getElementById(f.id).addEventListener('input', function() {
+      this.classList.remove('error');
+      document.getElementById(f.errorId).classList.remove('show');
+      this.setAttribute('aria-invalid', 'false');
+    });
+  });
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // 1. Client-side validation
+    let valid = true;
+    validationRules.forEach(f => {
+      const input = document.getElementById(f.id);
+      const error = document.getElementById(f.errorId);
+      if (!f.validate(input.value)) {
+        input.classList.add('error');
+        error.classList.add('show');
+        input.setAttribute('aria-invalid', 'true');
+        valid = false;
+      } else {
+        input.classList.remove('error');
+        error.classList.remove('show');
+        input.setAttribute('aria-invalid', 'false');
+      }
+    });
+
+    if (!valid) {
+      document.getElementById('form-announcer').textContent = 'Please fix the errors in the form before submitting.';
+      const firstError = document.querySelector('.form-input.error');
+      if (firstError) firstError.focus();
+      return;
+    }
+
+    // 2. Submit to Formspree via fetch (keeps user on page, shows our own success UI)
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        // Show success state
+        document.getElementById('contact-form-wrap').style.display = 'none';
+        const success = document.getElementById('form-success');
+        success.classList.add('show');
+        success.focus();
+      } else {
+        // Formspree returned an error
+        const data = await response.json();
+        const msg = (data.errors && data.errors.map(err => err.message).join(', ')) || 'Something went wrong. Please try again or call directly.';
+        document.getElementById('form-announcer').textContent = msg;
+        submitBtn.textContent = 'Send Message →';
+        submitBtn.disabled = false;
+      }
+    } catch (err) {
+      // Network error
+      document.getElementById('form-announcer').textContent = 'Unable to send — please check your connection or call us directly at (365) 305-1702.';
+      submitBtn.textContent = 'Send Message →';
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

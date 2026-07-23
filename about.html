@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Niha | Therapy by Niha</title>
+<meta name="description" content="Meet Niha Idrees, Registered Psychotherapist (Qualifying). Culturally sensitive therapy rooted in lived experience, empathy, and a belief in your capacity to heal.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .about-hero {
+    background: var(--sage-pale);
+    padding: 64px 8%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 56px; align-items: start;
+  }
+
+  .about-photo-frame { position: relative; flex-shrink: 0; }
+
+  .about-photo {
+    width: 280px; height: 360px;
+    object-fit: cover; object-position: top center;
+    border-radius: 20px; display: block; filter: saturate(0.9);
+  }
+
+  .about-photo-decoration {
+    position: absolute; bottom: -16px; right: -16px;
+    width: 80px; height: 80px;
+    background: var(--sage-light); border-radius: 50%; opacity: 0.5; z-index: -1;
+  }
+
+  .about-credential-badge {
+    position: absolute; top: 16px; right: -24px;
+    background: white; border-radius: 10px; padding: 12px 16px;
+    border: 1px solid rgba(45,82,65,0.15);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+
+  .badge-title { font-size: 10px; font-weight: 600; color: var(--sage); letter-spacing: 0.07em; text-transform: uppercase; }
+  .badge-text { font-size: 12px; color: var(--text-mid); margin-top: 3px; font-weight: 300; }
+
+  .about-bio-eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage); margin-bottom: 14px; font-weight: 600; }
+  .about-bio-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 300; line-height: 1.2; margin-bottom: 6px; }
+  .about-bio-role { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 24px; font-weight: 600; }
+  .about-bio-text { font-size: 16px; color: var(--text-mid); line-height: 1.9; font-weight: 300; margin-bottom: 14px; }
+
+  .language-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+  .lang-badge { background: white; border: 1px solid var(--sage-light); color: var(--sage-deep); padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 500; }
+
+  .credentials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 48px; }
+
+  .credential-card { background: white; border: 1px solid rgba(45,82,65,0.12); border-radius: 14px; padding: 28px 20px; text-align: center; }
+  .credential-icon-wrap { width: 52px; height: 52px; background: var(--sage-pale); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 22px; }
+  .credential-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; color: var(--text-dark); margin-bottom: 6px; }
+  .credential-detail { font-size: 13px; color: var(--text-light); font-weight: 300; line-height: 1.6; }
+
+  .who-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+
+  .message-card { background: white; border-radius: 20px; padding: 40px; border: 1px solid rgba(45,82,65,0.1); }
+  .message-card blockquote { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; line-height: 1.7; color: var(--text-dark); font-style: italic; margin-bottom: 24px; }
+
+  @media (max-width: 900px) {
+    .about-hero { grid-template-columns: 1fr; gap: 0; }
+    .about-photo-frame { display: flex; justify-content: center; margin-bottom: 40px; }
+    .about-photo { width: 100%; max-width: 340px; height: 380px; }
+    .about-credential-badge { right: calc(50% - 170px - 20px); }
+    .credentials-grid { grid-template-columns: 1fr 1fr; }
+    .who-layout { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  @media (max-width: 600px) {
+    .about-hero { padding: 48px 5%; }
+    .about-photo { max-width: 100%; height: 300px; }
+    .about-credential-badge { position: static; margin-top: 12px; display: inline-block; }
+    .credentials-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav aria-label="Main navigation">
+  <a href="index.html" class="nav-brand" aria-label="Therapy by Niha – home">Therapy by Niha</a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu" onclick="toggleNav(this)">☰</button>
+  <ul class="nav-links" id="nav-menu" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active" aria-current="page">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="nav-cta">Book Consultation</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <main id="main-content">
+
+    <section class="about-hero" aria-labelledby="about-name">
+      <div class="about-photo-frame animate-1">
+        <img
+          src="https://photos.psychologytoday.com/22229eb5-f44a-4f1c-b796-847f57c0ae92/1/320x400.png"
+          alt="Niha Idrees, Registered Psychotherapist, smiling warmly in a professional setting"
+          class="about-photo"
+          width="320" height="400"
+        />
+        <div class="about-photo-decoration" aria-hidden="true"></div>
+        <div class="about-credential-badge">
+          <div class="badge-title">CRPO Registered</div>
+          <div class="badge-text">License #19892</div>
+        </div>
+      </div>
+      <div class="animate-2">
+        <p class="about-bio-eyebrow">Meet Your Therapist</p>
+        <h1 class="about-bio-title" id="about-name">Niha Idrees</h1>
+        <p class="about-bio-role">Registered Psychotherapist (Qualifying)</p>
+        <p class="about-bio-text">As a Person of Colour, I understand the deep and often unspoken challenges of navigating multiple cultural identities, expectations, and transitions. My lived experience has shaped how I show up in the therapy room — with empathy, openness, and a strong belief in the healing power of feeling understood.</p>
+        <p class="about-bio-text">I am passionate about working with individuals from diverse backgrounds, especially those facing concerns related to cultural identity, self-esteem, family dynamics, anxiety, relationships, and life transitions. I offer a compassionate, culturally sensitive space where clients can feel truly seen and supported.</p>
+        <p class="about-bio-text">When you work with me, you can expect a welcoming and nonjudgmental space where your story matters. I strive to create a therapeutic relationship that feels safe and empowering, where you can explore your challenges, reconnect with your strengths, and move forward with greater self-awareness and confidence.</p>
+        <div class="language-badges" aria-label="Languages spoken">
+          <span class="lang-badge">🗣 English</span>
+          <span class="lang-badge">🗣 Hindi</span>
+          <span class="lang-badge">🗣 Urdu</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="credentials-heading">
+      <p class="section-eyebrow">Education &amp; Credentials</p>
+      <h2 class="section-title" id="credentials-heading">Qualified, verified, <em>and committed</em></h2>
+      <div class="credentials-grid">
+        <div class="credential-card">
+          <div class="credential-icon-wrap" aria-hidden="true">🎓</div>
+          <h3 class="credential-title">Masters in Counseling Psychology</h3>
+          <p class="credential-detail">Diploma in Addiction &amp; Mental Health<br>Graduated 2022</p>
+        </div>
+        <div class="credential-card">
+          <div class="credential-icon-wrap" aria-hidden="true">📜</div>
+          <h3 class="credential-title">CRPO Licensed</h3>
+          <p class="credential-detail">Province of Ontario<br>Registration #19892</p>
+        </div>
+        <div class="credential-card">
+          <div class="credential-icon-wrap" aria-hidden="true">🏛</div>
+          <h3 class="credential-title">OAMHP Member</h3>
+          <p class="credential-detail">Ontario Association of<br>Mental Health Professionals #8116-S</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="who-heading">
+      <div class="who-layout">
+        <div>
+          <p class="section-eyebrow">Who I Work With</p>
+          <h2 class="section-title" id="who-heading">You are <em>welcome here</em></h2>
+          <p class="section-body" style="margin-bottom:20px;">I work with individuals across the lifespan — from preteens to elders — with a special commitment to culturally diverse communities.</p>
+          <p class="section-body">My practice centres those who have felt unseen, unheard, or misunderstood in other spaces. You deserve a therapist who gets it.</p>
+          <div class="approach-tags" style="margin-top:28px;" aria-label="Communities served">
+            <span class="approach-tag">Asian Community</span>
+            <span class="approach-tag">Black Community</span>
+            <span class="approach-tag">Muslim Community</span>
+            <span class="approach-tag">Immigrants &amp; Newcomers</span>
+            <span class="approach-tag">Single Parents</span>
+            <span class="approach-tag">Preteens &amp; Teens</span>
+            <span class="approach-tag">Adults</span>
+            <span class="approach-tag">Elders (65+)</span>
+          </div>
+        </div>
+        <div class="message-card">
+          <p class="section-eyebrow">A Message for You</p>
+          <blockquote>"I believe that every person carries within them the capacity for healing and growth. My role is not to fix you — but to walk alongside you as you discover your own strength."</blockquote>
+          <a href="contact.html" class="btn-primary" style="font-size:13px;">Begin Your Journey</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Therapy by Niha</div>
+        <p class="footer-tagline">A compassionate, culturally sensitive space where you can feel truly seen, supported, and empowered to grow.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigate</p>
+        <ul class="footer-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Niha</a></li>
+          <li><a href="services.html">Services &amp; Fees</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Contact</p>
+        <ul class="footer-links" role="list">
+          <li><a href="tel:+13653051702">(365) 305-1702</a></li>
+          <li style="color:rgba(255,255,255,0.5); font-size:13px; padding: 4px 0;">Mississauga, ON L5M</li>
+          <li style="color:rgba(255,255,255,0.5); font-size:13px;">Online sessions only</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Therapy by Niha · All rights reserved</span>
+      <span>CRPO #19892 · OAMHP #8116-S</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  function toggleNav(btn) {
+    const menu = document.getElementById('nav-menu');
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+    btn.textContent = isOpen ? '✕' : '☰';
+  }
+  document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('nav-menu').classList.remove('open');
+      const btn = document.querySelector('.nav-toggle');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = '☰';
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!document.querySelector('nav').contains(e.target)) {
+      document.getElementById('nav-menu').classList.remove('open');
+      const btn = document.querySelector('.nav-toggle');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = '☰';
+    }
+  });
+</script>
+</body>
+</html>
