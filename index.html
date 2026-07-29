@@ -188,8 +188,17 @@
      MOBILE ≤ 600px
      ══════════════════════════════ */
   @media (max-width: 600px) {
+    /* Give image enough room without the badge overlapping */
     .hero { grid-template-rows: 300px auto; }
-    .hero-image-col { min-height: 300px; }
+    .hero-image-col { min-height: 300px; padding-bottom: 0; }
+
+    /* Take badge out of absolute flow — sit it below the image */
+    .hero-badge {
+      position: static;
+      margin: 0 5% 0;
+      border-radius: 0 0 14px 14px;
+      border-top: none;
+    }
 
     .trust-bar { grid-template-columns: 1fr 1fr; }
     .trust-bar .trust-item:last-child { grid-column: 1 / -1; }
