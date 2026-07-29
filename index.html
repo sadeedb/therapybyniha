@@ -173,6 +173,8 @@
     }
 
     .hero-image-col { order: -1; min-height: 380px; }
+
+    /* On tablet, keep fixed height crop; mobile override below resets this */
     .hero-text { padding: 48px 6%; }
     .hero-sub { max-width: 100%; }
 
@@ -188,15 +190,36 @@
      MOBILE ≤ 600px
      ══════════════════════════════ */
   @media (max-width: 600px) {
-    /* Give image enough room without the badge overlapping */
-    .hero { grid-template-rows: 300px auto; }
-    .hero-image-col { min-height: 300px; padding-bottom: 0; }
+    /* Let the image column size to its natural content height */
+    .hero { grid-template-rows: auto auto; }
+    .hero-image-col {
+      min-height: unset;
+      height: auto;
+      position: relative;
+    }
 
-    /* Take badge out of absolute flow — sit it below the image */
+    /* Switch from absolute-fill to natural image flow */
+    .hero-image-wrapper {
+      position: static;
+      display: block;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: unset;
+    }
+
+    .hero-image-overlay { display: none; }
+
+    /* Badge sits naturally below the image */
     .hero-badge {
       position: static;
-      margin: 0 5% 0;
-      border-radius: 0 0 14px 14px;
+      margin: 0;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
       border-top: none;
     }
 
