@@ -6,6 +6,7 @@
 <title>Therapy by Niha | Registered Psychotherapist · Mississauga, ON</title>
 <meta name="description" content="Niha Idrees, Registered Psychotherapist in Mississauga, ON. Culturally sensitive, compassionate therapy for anxiety, identity, relationships, and life transitions. Free 15-minute consultation.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="style.css">
 <style>
   /* ── HERO ── */
@@ -42,28 +43,33 @@
 
   /* Hero image — visible on all sizes, switches layout on mobile */
   .hero-image-col {
-    position: relative; overflow: hidden; background: var(--sage-pale);
+    position: relative; background: var(--sage-pale);
     min-height: 400px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 48px 40px;
   }
 
-  .hero-image-wrapper { position: absolute; inset: 0; }
+  .hero-image-wrapper {
+    position: relative;
+    width: 100%; max-width: 360px;
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(45,82,65,0.15);
+  }
 
   .hero-photo {
-    width: 100%; height: 100%;
+    width: 100%; height: auto;
+    display: block;
     object-fit: cover; object-position: top center;
     filter: saturate(0.9);
   }
 
-  .hero-image-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 60%, rgba(29,46,37,0.25) 100%);
-  }
+  .hero-image-overlay { display: none; }
 
   .hero-badge {
-    position: absolute; bottom: 24px; left: 24px; right: 24px;
+    position: absolute; bottom: -1px; left: 0; right: 0;
     background: rgba(250,248,244,0.96);
     border: 1px solid rgba(45,82,65,0.2);
-    border-radius: 14px; padding: 16px 20px;
+    border-radius: 0 0 20px 20px; padding: 14px 18px;
     display: flex; align-items: center; gap: 12px;
   }
 
@@ -76,7 +82,7 @@
 
   /* ── TRUST BAR ── */
   .trust-bar {
-    background: var(--sage-deep); color: white;
+    background: #A8C8B4; color: var(--text-dark);
     padding: 36px 6%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -87,12 +93,13 @@
 
   .trust-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 34px; font-weight: 300; display: block;
-    color: var(--gold-light); line-height: 1; margin-bottom: 6px;
+    font-size: 34px; font-weight: 600; display: block;
+    color: var(--sage-deep); line-height: 1; margin-bottom: 6px;
   }
 
   .trust-label {
-    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-mid); opacity: 1;
   }
 
   /* ── SPECIALTIES ── */
@@ -172,9 +179,8 @@
       min-height: auto;
     }
 
-    .hero-image-col { order: -1; min-height: 380px; }
-
-    /* On tablet, keep fixed height crop; mobile override below resets this */
+    .hero-image-col { order: -1; min-height: 360px; padding: 36px 32px; }
+    .hero-image-wrapper { max-width: 300px; }
     .hero-text { padding: 48px 6%; }
     .hero-sub { max-width: 100%; }
 
@@ -190,37 +196,14 @@
      MOBILE ≤ 600px
      ══════════════════════════════ */
   @media (max-width: 600px) {
-    /* Let the image column size to its natural content height */
     .hero { grid-template-rows: auto auto; }
     .hero-image-col {
-      min-height: unset;
-      height: auto;
-      position: relative;
+      min-height: unset; padding: 24px 5% 0;
     }
+    .hero-image-wrapper { max-width: 100%; border-radius: 16px; }
 
-    /* Switch from absolute-fill to natural image flow */
-    .hero-image-wrapper {
-      position: static;
-      display: block;
-    }
-
-    .hero-photo {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: unset;
-    }
-
-    .hero-image-overlay { display: none; }
-
-    /* Badge sits naturally below the image */
     .hero-badge {
-      position: static;
-      margin: 0;
-      border-radius: 0;
-      border-left: none;
-      border-right: none;
-      border-top: none;
+      border-radius: 0 0 16px 16px;
     }
 
     .trust-bar { grid-template-columns: 1fr 1fr; }
