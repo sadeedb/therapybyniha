@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services &amp; Fees | Therapy by Niha</title>
 <meta name="description" content="Individual therapy at $150/session, free 15-minute consultations, and sliding scale fees. Online therapy available across Ontario.">
@@ -18,7 +19,9 @@
   }
 
   .service-card { background: white; border: 1px solid rgba(45,82,65,0.12); border-radius: 20px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
-  .service-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(45,82,65,0.1); }
+  @media (hover: hover) and (pointer: fine) {
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(45,82,65,0.1); }
+  }
 
   .service-card-top { background: var(--sage-pale); padding: 36px 28px 28px; }
   .service-card-icon { font-size: 32px; margin-bottom: 14px; display: block; }
@@ -85,7 +88,7 @@
       <p class="section-body animate-3">Flexible, online therapy tailored to your needs, schedule, and budget. Your wellbeing comes first.</p>
     </section>
 
-    <div class="services-grid" role="list">
+    <div class="services-grid reveal" role="list">
 
       <article class="service-card" role="listitem">
         <div class="service-card-top">
@@ -165,7 +168,7 @@
     </div>
 
     <section class="modalities-section" aria-labelledby="modalities-heading">
-      <div class="modalities-layout">
+      <div class="modalities-layout reveal">
         <div>
           <p class="section-eyebrow">Therapy Modalities</p>
           <h2 class="section-title" id="modalities-heading">Evidence-based tools, <em>human heart</em></h2>
@@ -257,29 +260,6 @@
   </footer>
 </div>
 
-<script>
-  function toggleNav(btn) {
-    const menu = document.getElementById('nav-menu');
-    const isOpen = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen);
-    btn.textContent = isOpen ? '✕' : '☰';
-  }
-  document.querySelectorAll('#nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.getElementById('nav-menu').classList.remove('open');
-      const btn = document.querySelector('.nav-toggle');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = '☰';
-    });
-  });
-  document.addEventListener('click', (e) => {
-    if (!document.querySelector('nav').contains(e.target)) {
-      document.getElementById('nav-menu').classList.remove('open');
-      const btn = document.querySelector('.nav-toggle');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = '☰';
-    }
-  });
-</script>
+<script src="script.js"></script>
 </body>
 </html>

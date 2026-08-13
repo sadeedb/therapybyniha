@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact &amp; Book | Therapy by Niha</title>
 <meta name="description" content="Book a free 15-minute consultation with Niha Idrees, Registered Psychotherapist. Call (365) 305-1702 or send a message online. Ontario-wide online sessions.">
@@ -83,8 +84,18 @@
 
   .form-submit { width: 100%; font-size: 15px; padding: 16px; min-height: 52px; border: none; cursor: pointer; }
 
-  .form-success { display: none; background: var(--sage-pale); border: 1px solid var(--sage-light); border-radius: 16px; padding: 40px 28px; text-align: center; }
+  .form-success {
+    display: none;
+    background: var(--sage-pale); border: 1px solid var(--sage-light); border-radius: 16px; padding: 40px 28px; text-align: center;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 250ms var(--ease-out), transform 250ms var(--ease-out);
+  }
   .form-success.show { display: block; }
+  .form-success.show.is-visible { opacity: 1; transform: translateY(0); }
+
+  #contact-form-wrap { transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); }
+  #contact-form-wrap.fading-out { opacity: 0; transform: translateY(-8px); }
+
   .form-success-icon { font-size: 44px; margin-bottom: 16px; }
   .form-success-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--sage-deep); margin-bottom: 10px; }
   .form-success-body { font-size: 15px; color: var(--text-mid); font-weight: 300; line-height: 1.7; margin-bottom: 28px; }
@@ -246,30 +257,8 @@
   </main>
 </div>
 
+<script src="script.js"></script>
 <script>
-  function toggleNav(btn) {
-    const menu = document.getElementById('nav-menu');
-    const isOpen = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen);
-    btn.textContent = isOpen ? '✕' : '☰';
-  }
-  document.querySelectorAll('#nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.getElementById('nav-menu').classList.remove('open');
-      const btn = document.querySelector('.nav-toggle');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = '☰';
-    });
-  });
-  document.addEventListener('click', (e) => {
-    if (!document.querySelector('nav').contains(e.target)) {
-      document.getElementById('nav-menu').classList.remove('open');
-      const btn = document.querySelector('.nav-toggle');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = '☰';
-    }
-  });
-
   // ── FORM VALIDATION + FORMSPREE SUBMISSION ──
   const form = document.getElementById('contact-form');
   const submitBtn = form.querySelector('button[type="submit"]');
@@ -328,11 +317,20 @@
       });
 
       if (response.ok) {
-        // Show success state
-        document.getElementById('contact-form-wrap').style.display = 'none';
+        // Cross-fade: form fades up and out, then success message fades up and in.
+        const formWrap = document.getElementById('contact-form-wrap');
         const success = document.getElementById('form-success');
-        success.classList.add('show');
-        success.focus();
+        formWrap.classList.add('fading-out');
+        setTimeout(() => {
+          formWrap.style.display = 'none';
+          success.classList.add('show');
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              success.classList.add('is-visible');
+              success.focus();
+            });
+          });
+        }, 200);
       } else {
         // Formspree returned an error
         const data = await response.json();

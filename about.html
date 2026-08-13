@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Niha | Therapy by Niha</title>
 <meta name="description" content="Meet Niha Idrees, Registered Psychotherapist (Qualifying). Culturally sensitive therapy rooted in lived experience, empathy, and a belief in your capacity to heal.">
@@ -128,7 +129,7 @@
     <section class="section" aria-labelledby="credentials-heading">
       <p class="section-eyebrow">Education &amp; Credentials</p>
       <h2 class="section-title" id="credentials-heading">Qualified, verified, <em>and committed</em></h2>
-      <div class="credentials-grid">
+      <div class="credentials-grid reveal">
         <div class="credential-card">
           <div class="credential-icon-wrap" aria-hidden="true">🎓</div>
           <h3 class="credential-title">Masters in Counseling Psychology</h3>
@@ -148,7 +149,7 @@
     </section>
 
     <section class="section section-alt" aria-labelledby="who-heading">
-      <div class="who-layout">
+      <div class="who-layout reveal">
         <div>
           <p class="section-eyebrow">Who I Work With</p>
           <h2 class="section-title" id="who-heading">You are <em>welcome here</em></h2>
@@ -206,29 +207,6 @@
   </footer>
 </div>
 
-<script>
-  function toggleNav(btn) {
-    const menu = document.getElementById('nav-menu');
-    const isOpen = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen);
-    btn.textContent = isOpen ? '✕' : '☰';
-  }
-  document.querySelectorAll('#nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.getElementById('nav-menu').classList.remove('open');
-      const btn = document.querySelector('.nav-toggle');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = '☰';
-    });
-  });
-  document.addEventListener('click', (e) => {
-    if (!document.querySelector('nav').contains(e.target)) {
-      document.getElementById('nav-menu').classList.remove('open');
-      const btn = document.querySelector('.nav-toggle');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = '☰';
-    }
-  });
-</script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Therapy by Niha | Registered Psychotherapist · Mississauga, ON</title>
 <meta name="description" content="Niha Idrees, Registered Psychotherapist in Mississauga, ON. Culturally sensitive, compassionate therapy for anxiety, identity, relationships, and life transitions. Free 15-minute consultation.">
@@ -121,8 +122,10 @@
     width: 4px; height: 100%; background: var(--sage-light); transition: background 0.3s;
   }
 
-  .specialty-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(45,82,65,0.1); border-color: var(--sage-light); }
-  .specialty-card:hover::before { background: var(--sage); }
+  @media (hover: hover) and (pointer: fine) {
+    .specialty-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(45,82,65,0.1); border-color: var(--sage-light); }
+    .specialty-card:hover::before { background: var(--sage); }
+  }
 
   .specialty-icon {
     width: 44px; height: 44px; background: var(--sage-pale);
@@ -299,7 +302,7 @@
       <p class="section-eyebrow">Areas of Focus</p>
       <h2 class="section-title" id="focus-heading">You don't have to navigate this <em>alone</em></h2>
       <p class="section-body">Whether you're carrying the weight of cultural expectations, struggling with anxiety, or navigating a major life change — there is support available.</p>
-      <div class="specialties-grid" role="list">
+      <div class="specialties-grid reveal" role="list">
         <article class="specialty-card" role="listitem">
           <div class="specialty-icon" aria-hidden="true">🌿</div>
           <h3 class="specialty-name">Anxiety &amp; Stress</h3>
@@ -334,7 +337,7 @@
     </section>
 
     <section class="section section-alt" aria-labelledby="approach-heading">
-      <div class="approach-layout">
+      <div class="approach-layout reveal">
         <div>
           <p class="section-eyebrow">My Approach</p>
           <h2 class="section-title" id="approach-heading">Therapy that <em>meets you</em> where you are</h2>
@@ -401,36 +404,6 @@
 
 </div>
 
-<script>
-  function toggleNav(btn) {
-    const menu = document.getElementById('nav-menu');
-    const isOpen = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen);
-    btn.textContent = isOpen ? '✕' : '☰';
-  }
-
-  // Close menu when a link is clicked
-  document.querySelectorAll('#nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      const menu = document.getElementById('nav-menu');
-      const btn = document.querySelector('.nav-toggle');
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = '☰';
-    });
-  });
-
-  // Close menu on outside click
-  document.addEventListener('click', (e) => {
-    const nav = document.querySelector('nav');
-    if (!nav.contains(e.target)) {
-      const menu = document.getElementById('nav-menu');
-      const btn = document.querySelector('.nav-toggle');
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = '☰';
-    }
-  });
-</script>
+<script src="script.js"></script>
 </body>
 </html>
