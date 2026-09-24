@@ -103,6 +103,19 @@
   /* Live error announcement */
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
+  /* ── BOOK NOW CTA + DIVIDER ── */
+  .booking-cta { margin-bottom: 32px; }
+  .booking-cta .section-body { margin-bottom: 20px; }
+
+  .or-divider {
+    display: flex; align-items: center; gap: 14px;
+    margin: 0 0 32px; color: var(--text-light);
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;
+  }
+  .or-divider::before, .or-divider::after {
+    content: ''; flex: 1; height: 1px; background: rgba(45,82,65,0.15);
+  }
+
   @media (max-width: 900px) {
     .contact-layout { grid-template-columns: 1fr; }
     .contact-left { padding: 56px 6%; }
@@ -180,6 +193,15 @@
 
       <section class="contact-right animate-2" aria-labelledby="form-heading">
         <div id="contact-form-wrap">
+          <div class="booking-cta">
+            <p class="form-eyebrow">Ready to Book?</p>
+            <h2 class="form-title">Book <em>instantly</em> online</h2>
+            <p class="section-body">Pick a time that works for you and book your session in seconds — no back-and-forth required.</p>
+            <a href="https://willow.sulosystems.com/book/niha-idrees" class="btn-primary form-submit" target="_blank" rel="noopener noreferrer">Book Now →</a>
+          </div>
+
+          <div class="or-divider" role="separator">or send a message</div>
+
           <p class="form-eyebrow">Send a Message</p>
           <h2 class="form-title" id="form-heading">I'd love to <em>hear from you</em></h2>
 
